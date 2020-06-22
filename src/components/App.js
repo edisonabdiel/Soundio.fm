@@ -45,7 +45,6 @@ class App extends React.Component {
         playing: true
       })
     );
-    console.log(this.widget, this.state)
   };
 
   componentDidMount(){
@@ -53,14 +52,15 @@ class App extends React.Component {
   };
 
   togglePlay = () => {
-    this.widget.togglePlay();
+    this.widget.tooglePlay();
   };
 
   playMix = mixName => {
-    // this.setState({
-    //   currentMix: mixName
-    // })
+    this.setState({
+      currentMix: mixName
+    })
     this.widget.load(mixName, true)
+    console.log(this.state)
   };
 
   render() {
@@ -78,6 +78,7 @@ class App extends React.Component {
               </button>
             </div>
             <div>
+              <h2>{this.state.currentMix}</h2>
               <button onClick={() => this.playMix("/Dekmantel/dekmantel-podcast-007-mick-wills/")}>Mick Wills</button>
             </div>
             <div>
