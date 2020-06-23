@@ -29,12 +29,16 @@ class App extends React.Component {
 
   state = {
     playing: false,
+    widgetReady: false,
     currentMix: ''
   }
 
   mountAudio = async () => {
     this.widget = Mixcloud.PlayerWidget(this.player);
     await this.widget.ready;
+    this.setState({
+      widgetReady: true
+    })
     this.widget.events.pause.on(() => 
       this.setState({
         playing: false
